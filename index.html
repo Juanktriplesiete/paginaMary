@@ -1,28 +1,26 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oye, mira</title>
+    <title>Pagina para la amargada esa </title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-image: url('https://example.com/pinguino-mensajero.jpg'); /* Reemplaza esta URL con la imagen de fondo */
+            background-image: url('img/fondo.gif'); /* Reemplaza 'tu-fondo.gif' con la URL del GIF de fondo */
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             padding: 50px;
-            color: white;
         }
-        h1, h2 {
-            color: white;
+        h1 {
+            color: black;
         }
         .hidden {
             display: none;
         }
         .card {
-            border: 2px solid white;
+            border: 2px solid #333;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.8);
             margin-top: 20px;
@@ -34,7 +32,8 @@
         button {
             background-color: #007BFF;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px; /* Aumenta el tamaño de los botones */
+            font-size: 18px; /* Tamaño del texto del botón */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -43,46 +42,73 @@
         button:hover {
             background-color: #0056b3;
         }
-        .penguin-image {
-            margin-top: 20px;
-            width: 150px; /* Puedes ajustar el tamaño según lo necesites */
+        img {
+            width: 250px; /* Aumenté el tamaño de las imágenes */
+            height: auto; 
+            display: block;
+            margin: 20px auto;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Asegura que los botones estén centrados */
         }
     </style>
 </head>
 <body>
 
-    <!-- Título principal -->
+    <!-- Título principal centrado -->
     <h1>Oye, mira</h1>
 
     <!-- Imagen del pingüino normal -->
-    <img src="https://example.com/pinguino-normal.jpg" alt="Pingüino normal" class="penguin-image"> <!-- Reemplaza esta URL con la imagen de un pingüino normal -->
+    <img id="imagenPingüino" src="img/img2.jfif" alt="Pingüino normal">
 
-    <!-- Botón para mostrar el segundo título -->
-    <button onclick="mostrarTitulo()">Presiona aquí</button>
+    <!-- Contenedor centrado para el botón -->
+    <div class="button-container">
+        <!-- Solo el primer botón visible al inicio -->
+        <button id="botonInicial" onclick="cambiarImagen()">Presiona aquí</button>
+    </div>
 
-    <!-- Segundo título oculto -->
-    <h2 id="titulo2" class="hidden">Llego esto para ti</h2>
-
-    <!-- Botón para abrir la carta -->
-    <button id="abrirCarta" class="hidden" onclick="mostrarCarta()">Abrir Carta</button>
+    <!-- Segundo botón oculto al inicio -->
+    <div class="button-container hidden" id="buttonContainerCarta">
+        <button id="botonCarta" onclick="mostrarCarta()">Abrir Carta</button>
+    </div>
 
     <!-- Carta oculta -->
     <div id="carta" class="card hidden">
         <p>Cuidate, porque sino ¿con quién me casaré?</p>
     </div>
 
+    <!-- Script para funcionalidad -->
     <script>
-        // Función para mostrar el segundo título y el botón de la carta
-        function mostrarTitulo() {
-            document.getElementById('titulo2').classList.remove('hidden');
-            document.getElementById('abrirCarta').classList.remove('hidden');
+        // Función para cambiar la imagen y mostrar el segundo botón
+        function cambiarImagen() {
+            document.getElementById('imagenPingüino').src = 'img/img1.jfif'; // Reemplaza con la URL de la nueva imagen
+            document.getElementById('botonInicial').classList.add('hidden'); // Oculta el primer botón
+            document.getElementById('buttonContainerCarta').classList.remove('hidden'); // Muestra el segundo botón
         }
 
         // Función para mostrar la carta
         function mostrarCarta() {
             document.getElementById('carta').classList.remove('hidden');
         }
+
+        // Reproducir audio al hacer clic en cualquier parte de la página
+        function iniciarMusica() {
+            var audio = document.getElementById('audio1');
+            audio.play();
+            // Solo iniciar la música una vez
+            document.removeEventListener('click', iniciarMusica);
+        }
+
+        // Espera a que el usuario haga clic en la página para iniciar la música
+        document.addEventListener('click', iniciarMusica);
     </script>
+
+    <!-- Audio de fondo (al final del body) -->
+    <audio id="audio1" loop>
+        <source src="audio/cancion.mp3" type="audio/mpeg"> <!-- Reemplaza 'audio/cancion.mp3' con la URL de tu archivo de audio -->
+        Tu navegador no soporta el audio.
+    </audio>
 
 </body>
 </html>
