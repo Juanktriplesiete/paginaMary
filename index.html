@@ -1,0 +1,88 @@
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oye, mira</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('https://example.com/pinguino-mensajero.jpg'); /* Reemplaza esta URL con la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 50px;
+            color: white;
+        }
+        h1, h2 {
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        .card {
+            border: 2px solid white;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            width: 300px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .penguin-image {
+            margin-top: 20px;
+            width: 150px; /* Puedes ajustar el tamaño según lo necesites */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Título principal -->
+    <h1>Oye, mira</h1>
+
+    <!-- Imagen del pingüino normal -->
+    <img src="https://example.com/pinguino-normal.jpg" alt="Pingüino normal" class="penguin-image"> <!-- Reemplaza esta URL con la imagen de un pingüino normal -->
+
+    <!-- Botón para mostrar el segundo título -->
+    <button onclick="mostrarTitulo()">Presiona aquí</button>
+
+    <!-- Segundo título oculto -->
+    <h2 id="titulo2" class="hidden">Llego esto para ti</h2>
+
+    <!-- Botón para abrir la carta -->
+    <button id="abrirCarta" class="hidden" onclick="mostrarCarta()">Abrir Carta</button>
+
+    <!-- Carta oculta -->
+    <div id="carta" class="card hidden">
+        <p>Cuidate, porque sino ¿con quién me casaré?</p>
+    </div>
+
+    <script>
+        // Función para mostrar el segundo título y el botón de la carta
+        function mostrarTitulo() {
+            document.getElementById('titulo2').classList.remove('hidden');
+            document.getElementById('abrirCarta').classList.remove('hidden');
+        }
+
+        // Función para mostrar la carta
+        function mostrarCarta() {
+            document.getElementById('carta').classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
